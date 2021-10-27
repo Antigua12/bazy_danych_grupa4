@@ -1,0 +1,13 @@
+CREATE TABLE przetwory
+(
+id_przetworu INT PRIMARY KEY NOT NULL,
+rok_produkcji INT(4) DEFAULT '1654' NOT NULL,
+id_wykonawcy INT NOT NULL,
+FOREIGN KEY(id_wykonawcy) REFERENCES postac(id_postaci),
+zawartosc VARCHAR(50) NOT NULL,
+dodatek VARCHAR(50) DEFAULT 'papryczka chilli' NOT NULL,
+id_konsumenta INT NOT NULL,
+FOREIGN KEY(id_konsumenta) REFERENCES postac(id_postaci)
+);
+
+INSERT INTO przetwory VALUES ('1',default,'3','zawartosc bigosu',default,'1');
