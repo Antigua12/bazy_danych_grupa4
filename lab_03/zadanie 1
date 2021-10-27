@@ -4,7 +4,7 @@ id_postaci INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 nazwa VARCHAR(40) NOT NULL,
 rodzaj enum('wiking','ptak','kobieta') NOT NULL,
 data_ur DATE NOT NULL,
-wiek INT NOT NULL,
+wiek INT NOT NULL
 );
 
 INSERT INTO postac VALUES
