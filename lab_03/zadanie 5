@@ -1,0 +1,39 @@
+INSERT INTO postac VALUES
+(default,'Wiking1','wiking','2000-01-01','21'),
+(default,'Wiking2','wiking','1999-01-01','22'),
+(default,'Wiking3','wiking','1998-01-01','23'),
+(default,'Wiking4','wiking','1997-01-01','24'),
+(default,'Wiking5','wiking','1996-01-01','25');
+
+
+CREATE TABLE statek
+(
+nazwa_statku VARCHAR(40) PRIMARY KEY NOT NULL,
+rodzaj_statku enum('rodzaj1','rodzaj2','rodzaj3') NOT NULL,
+data_wodowania DATE NOT NULL,
+max_ladownosc INT(3) UNSIGNED
+);
+
+INSERT INTO statek VALUES
+('Statek jeden','rodzaj1','2000-01-01','30'),
+('Statek dwa','rodzaj2','1999-02-02','50');
+
+ALTER TABLE postac ADD COLUMN funkcja VARCHAR(20);
+
+UPDATE postac SET funkcja='kapitan' WHERE nazwa='Bjorn';
+
+ALTER TABLE postac ADD COLUMN statek VARCHAR(40) NOT NULL;
+
+ALTER TABLE postac ADD FOREIGN KEY(statek) REFERENCES statek(nazwa_statku);
+
+UPDATE postac SET statek='Statek jeden' WHERE nazwa='Bjorn';
+UPDATE postac SET statek='Statek jeden' WHERE nazwa='Wiking1'; 
+UPDATE postac SET statek='Statek jeden' WHERE nazwa='Wiking2'; 
+UPDATE postac SET statek='Statek dwa' WHERE nazwa='Wiking3'; 
+UPDATE postac SET statek='Statek dwa' WHERE nazwa='Wiking4'; 
+UPDATE postac SET statek='Statek dwa' WHERE nazwa='Wiking5'; 
+UPDATE postac SET statek='Statek jeden' WHERE nazwa='Drozd'; 
+
+DELETE FROM izba WHERE nazwa_izby='Izba Jeden';
+
+DROP TABLE izba;
