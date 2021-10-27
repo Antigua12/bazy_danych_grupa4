@@ -7,7 +7,7 @@ id_wlasciciela INT,
 FOREIGN KEY(id_wlasciciela) REFERENCES postac(id_postaci) on delete SET NULL
 );
 
-ALTER TABLE walizka ALTER kolor SET DEFAULT 'rozowy';
+ALTER TABLE walizka ALTER COLUMN kolor SET DEFAULT 'rozowy';
 
 INSERT INTO walizka VALUES
 (NULL,'5','czerwony','1'),
