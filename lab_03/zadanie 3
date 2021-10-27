@@ -1,0 +1,15 @@
+CREATE TABLE izba
+(
+adres_budynku VARCHAR(50) NOT NULL,
+nazwa_izby VARCHAR (30) NOT NULL,
+PRIMARY KEY(adres_budynku,nazwa_izby),
+metraz INT UNSIGNED NOT NULL,
+wlasciciel INT,
+FOREIGN KEY(wlasciciel) REFERENCES postac(id_postaci) on delete set null
+);
+
+ALTER TABLE izba ADD COLUMN kolor_izby VARCHAR(20) AFTER metraz;
+
+ALTER TABLE izba ALTER COLUMN kolor_izby SET DEFAULT 'czarny';
+
+INSERT INTO izba VALUES ('Warszawska 15','Izba Jeden','50',default,'2');
