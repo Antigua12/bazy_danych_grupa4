@@ -1,0 +1,14 @@
+CREATE TABLE walizka
+(
+id_walizki INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+pojemnosc INT NOT NULL,
+kolor enum('rozowy','czerwony','teczowy','zolty'),
+id_wlasciciela INT,
+FOREIGN KEY(id_wlasciciela) REFERENCES postac(id_postaci) on delete SET NULL
+);
+
+ALTER TABLE walizka ALTER kolor SET DEFAULT 'rozowy';
+
+INSERT INTO walizka VALUES
+(NULL,'5','czerwony','1'),
+(NULL,'10',default,'3');
