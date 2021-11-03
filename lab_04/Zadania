@@ -1,0 +1,81 @@
+ZADANIE 1:
+
+SELECT * FROM postac WHERE rodzaj='wiking' AND nazwa!='Bjorn' ORDER BY wiek DESC;
+
+DELETE FROM postac WHERE rodzaj='wiking' AND nazwa!='Bjorn' AND wiek IN('25','24');
+
+SET foreign_key_checks=0;
+
+ALTER TABLE postac MODIFY id_postaci int;
+
+ALTER TABLE postac DROP FOREIGN KEY postac_ibfk_1;
+ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_1;
+ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_2;
+ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1;
+
+ALTER TABLE postac DROP Primary key;
+
+######################################################
+
+ZADANIE 2:
+
+ALTER TABLE postac ADD COLUMN pesel char(11);
+
+UPDATE postac set pesel='12345678901' + id_postaci;
+
+ALTER TABLE postac add primary key(pesel);
+
+ALTER TABLE postac MODIFY rodzaj enum('wiking','ptak','kobieta','syrena');
+
+INSERT INTO postac VALUES('7','Gertruda Nieszczera','syrena','2000-05-05','21',NULL,NULL,'12345678908');
+
+######################################################
+
+ZADANIE 3:
+
+SELECT statek FROM postac WHERE nazwa='Bjorn';
+
+UPDATE postac SET statek='Statek jeden' WHERE nazwa LIKE '%a%';
+
+UPDATE statek SET max_ladownosc=max_ladownosc * 0.7 WHERE data_wodowania BETWEEN '1901-01-01' AND '2000-12-31';
+
+ALTER TABLE postac add check (wiek<1000);
+
+######################################################
+
+ZADANIE 4:
+
+INSERT INTO postac VALUES('8','waz Loko',NULL,'2015-01-01','6',NULL,NULL,'12345678909');
+
+CREATE TABLE Marynarz
+(
+id_postaci INT NOT NULL,
+nazwa VARCHAR(40) NOT NULL,
+rodzaj enum('wiking','ptak','kobieta','syrena'),
+data_ur DATE NOT NULL,
+wiek int NOT NULL,
+funkcja VARCHAR(20),
+statek VARCHAR(40),
+pesel char(11) PRIMARY KEY NOT NULL
+);
+
+
+INSERT INTO Marynarz SELECT * FROM postac WHERE statek IS NOT NULL;
+
+ALTER TABLE Marynarz ADD FOREIGN KEY(statek) REFERENCES statek(nazwa_statku);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
