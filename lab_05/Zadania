@@ -1,0 +1,53 @@
+ZADANIE 1:
+
+1)CREATE TABLE kreatura SELECT * FROM wikingowie.kreatura;
+
+CREATE TABLE zasob SELECT * FROM wikingowie.zasob;
+
+CREATE TABLE ekwipunek SELECT * FROM wikingowie.ekwipunek;
+
+2)SELECT * FROM zasob;
+
+3)SELECT * FROM zasob WHERE rodzaj='jedzenie';
+
+4) SELECT idZasobu,ilosc FROM ekwipunek WHERE idKreatury IN('1','3','5'); 
+
+######################################################
+
+ZADANIE 2:
+
+1) SELECT * FROM kreatura WHERE rodzaj!='wiedzma' AND udzwig>=50;
+
+2) SELECT * FROM zasob WHERE waga BETWEEN 2.00 AND 5.00;
+
+3) SELECT * FROM kreatura WHERE nazwa LIKE '%or%' AND udzwig BETWEEN 30 AND 70;
+
+######################################################
+
+ZADANIE 3:
+
+1) SELECT * FROM zasob WHERE MONTH(dataPozyskania) IN ('7','8');
+
+2) SELECT * FROM zasob WHERE rodzaj IS NOT NULL ORDER BY waga;
+
+3) SELECT * FROM kreatura order by dataUr limit 5;
+
+######################################################
+
+ZADANIE 4:
+
+1) SELECT DISTINCT rodzaj FROM zasob;
+
+2) SELECT CONCAT(nazwa,' ', rodzaj) AS 'nazwa-rodzaj' FROM kreatura WHERE rodzaj LIKE 'wi%';
+
+3) SELECT SUM(ilosc*waga) FROM zasob WHERE dataPozyskania BETWEEN '2001-01-01' AND '2007-12-31';
+
+######################################################
+
+ZADANIE 5:
+
+1) SELECT (waga*0.7),(waga*0.3) FROM zasob; 
+
+2) SELECT * FROM zasob WHERE rodzaj IS NULL;
+
+3) SELECT DISTINCT rodzaj FROM zasob WHERE nazwa LIKE  'Ba%' OR '%os';
