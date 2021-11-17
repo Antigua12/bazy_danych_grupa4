@@ -1,0 +1,37 @@
+ZADANIE 1:
+
+1) SELECT rodzaj, AVG(waga) FROM kreatura WHERE rodzaj='wiking';
+
+2) SELECT rodzaj, COUNT(rodzaj), AVG(waga) AS 'ilosc' FROM kreatura GROUP BY rodzaj;
+
+3) SELECT rodzaj, AVG(YEAR(dataUr)) FROM kreatura GROUP BY rodzaj;
+
+######################################################
+
+ZADANIE 2:
+
+1) SELECT rodzaj, SUM(waga) FROM zasob GROUP BY rodzaj;
+
+2) SELECT nazwa, AVG(waga) FROM zasob WHERE ilosc>=4 GROUP BY nazwa HAVING AVG(waga)>10;
+
+3) SELECT COUNT(DISTINCT nazwa), rodzaj FROM zasob WHERE ilosc>1 GROUP BY rodzaj;
+
+######################################################
+
+ZADANIE 3:
+
+1) SELECT kreatura.nazwa, SUM(ekwipunek.ilosc) FROM kreatura,ekwipunek WHERE kreatura.idKreatury=ekwipunek.idKreatury GROUP BY kreatura.nazwa;
+
+2) SELECT kreatura.nazwa, zasob.nazwa FROM kreatura,zasob,ekwipunek WHERE kreatura.idKreatury=ekwipunek.idKreatury AND ekwipunek.idZasobu=zasob.idZasobu ORDER BY kreatura.nazwa;
+
+3) SELECT kreatura.nazwa FROM kreatura,ekwipunek WHERE kreatura.idKreatury=ekwipunek.idKreatury GROUP BY kreatura.nazwa HAVING SUM(ekwipunek.ilosc)=0 ;
+
+######################################################
+
+ZADANIE 4:
+
+1) SELECT kreatura.nazwa, kreatura.dataUr, zasob.nazwa FROM kreatura,zasob,ekwipunek WHERE kreatura.rodzaj='wiking' AND kreatura.idKreatury=ekwipunek.idKreatury AND ekwipunek.idZasobu=zasob.idZasobu AND YEAR(kreatura.dataUr) BETWEEN 1670 and 1680;
+
+2) SELECT kreatura.nazwa FROM kreatura INNER JOIN ekwipunek e ON kreatura.idKreatury=e.idKreatury INNER JOIN zasob z ON e.idZasobu=z.idZasobu WHERE z.rodzaj='jedzenie' HAVING kreatura.dataUr=MIN(kreatura.dataUr) limit 5;
+
+^^ to nie koniec
