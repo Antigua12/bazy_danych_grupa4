@@ -32,4 +32,15 @@ ZADANIE 3:
 
 ZADANIE 4:
 
-1) SELECT w.nazwa,SUM(LENGTH(e.dziennik)) FROM wyprawa w LEFT JOIN etapy_wyprawy e ON w.id_wyprawy=e.idWyprawy GROUP BY w.nazwa HAVING LENGTH(e.dziennik)<400;
+1) SELECT w.nazwa,SUM(LENGTH(e.dziennik)) FROM wyprawa w LEFT JOIN etapy_wyprawy e ON w.id_wyprawy=e.idWyprawy GROUP BY w.nazwa HAVING SUM(LENGTH(e.dziennik))<400;
+
+2) SELECT w.nazwa, SUM(z.waga*e.ilosc)/COUNT(DISTINCT u.id_uczestnika) FROM uczestnicy u LEFT JOIN ekwipunek e ON u.id_uczestnika=e.idKreatury LEFT JOIN zasob z ON e.idZasobu=z.idZasobu LEFT JOIN wyprawa w ON u.id_wyprawy=w.id_wyprawy GROUP BY w.nazwa;
+
+SELECT w.nazwa, COUNT(u.id_uczestnika)
+FROM uczestynicy u
+
+######################################################
+
+ZADANIE 5:
+
+1) SELECT k.nazwa,DATEDIFF(w.data_rozpoczecia, k.dataUr) FROM kreatura k INNER JOIN uczestnicy u ON k.idKreatury=u.id_uczestnika INNER JOIN wyprawa w ON u.id_wyprawy=w.id_wyprawy INNER JOIN etapy_wyprawy e ON w.id_wyprawy=e.idWyprawy INNER JOIN sektor s ON e.sektor=s.id_sektora WHERE s.nazwa='Chatka dziadka';
