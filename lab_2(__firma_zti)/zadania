@@ -1,0 +1,51 @@
+ZADANIE 1:
+
+1) SELECT nazwisko FROM pracownik ORDER BY nazwisko;
+
+2) SELECT imie, nazwisko, pensja FROM pracownik WHERE data_urodzenia>1979;
+
+3) SELECT * FROM pracownik WHERE pensja BETWEEN 3500 AND 5000;
+
+4) SELECT towar FROM stan_magazynowy WHERE ilosc>10;
+
+5) SELECT * FROM towar WHERE nazwa_towaru LIKE 'A%' OR nazwa_towaru LIKE 'B%' OR nazwa_towaru LIKE 'C%';
+
+6) SELECT * FROM klient WHERE czy_firma=0;
+
+7) SELECT * FROM zamowienie ORDER BY data_zamowienia DESC limit 10;
+
+8) SELECT * FROM pracownik ORDER BY pensja ASC limit 5;
+
+9) SELECT * FROM towar WHERE nazwa_towaru NOT LIKE '%a%' ORDER BY cena_zakupu DESC limit 10;
+
+10) 
+SELECT * FROM towar t
+JOIN stan_magazynowy s ON t.id_towaru=s.towar
+JOIN jednostka_miary j ON s.jm=j.id_jednostki
+WHERE j.nazwa='szt' 
+ORDER BY t.nazwa_towaru ASC,t.cena_zakupu DESC;
+
+11) CREATE TABLE towary_powyzej_100 SELECT * FROM __firma_zti.towar WHERE towar.cena_zakupu>=100;
+
+12) CREATE TABLE brummansa.pracownik_50_plus LIKE pracownik;
+
+INSERT INTO brummansa.pracownik_50_plus SELECT * FROM pracownik WHERE YEAR(data_urodzenia)>=50;
+
+######################################################
+
+ZADANIE 2:
+
+1) SELECT p.imie, p.nazwisko, d.nazwa FROM pracownik p
+JOIN dzial d ON p.dzial=d.id_dzialu;
+
+2) SELECT t.nazwa_towaru, k.nazwa_kategori, s.ilosc
+FROM towar t
+JOIN kategoria k ON t.kategoria=k.id_kategori
+JOIN stan_magazynowy s ON t.id_towaru=s.towar
+ORDER BY s.ilosc DESC;
+
+3) SELECT z.* FROM zamowienie z 
+JOIN status_zamowienia s ON z.status_zamowienia=s.id_statusu_zamowienia
+WHERE z.status_zamowienia=6;
+
+4) 
